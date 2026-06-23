@@ -1,0 +1,281 @@
+// ════════════════════════════════════════════
+// St. Joseph's Hospital — Database Schema
+// Prisma + PostgreSQL
+// ════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ────────────────────────────────────
+// ADMIN USERS (no public patient accounts — patients book as guests)
+// ────────────────────────────────────
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  fullName     String
+  role         Role     @default(ADMIN)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  newsEvents   NewsEvent[]
+  auditLogs    AuditLog[]
+
+  @@map("users")
+}
+
+// ────────────────────────────────────
+// DEPARTMENTS
+// ────────────────────────────────────
+model Department {
+  id           String   @id @default(uuid())
+  name         String
+  slug         String   @unique
+  description  String?
+  iconEmoji    String?  // e.g. "🫀" — simple, no image needed
+  bannerUrl    String?
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  doctors       Doctor[]
+  appointments  Appointment[]
+
+  @@index([isActive, displayOrder])
+  @@map("departments")
+}
+
+// ────────────────────────────────────
+// DOCTORS
+// ────────────────────────────────────
+model Doctor {
+  id                String   @id @default(uuid())
+  fullName          String
+  slug              String   @unique
+  designation       String?
+  specialisation    String
+  departmentId      String
+  department        Department @relation(fields: [departmentId], references: [id])
+  qualifications    String?
+  experienceYears   Int?
+  photoUrl          String?
+  bio               String?
+  availableDays     String[] // e.g. ['Monday','Wednesday','Friday']
+  consultationTime  String?  // e.g. '10:00 AM - 1:00 PM'
+  isActive          Boolean  @default(true)
+  displayOrder      Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  appointments      Appointment[]
+
+  @@index([departmentId, isActive])
+  @@index([isActive, displayOrder])
+  @@map("doctors")
+}
+
+// ────────────────────────────────────
+// APPOINTMENTS
+// ────────────────────────────────────
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model Appointment {
+  id               String            @id @default(uuid())
+  referenceNo      String            @unique // e.g. SJH-2026-00142
+  patientName      String
+  patientPhone     String
+  patientEmail     String?
+  patientAge       Int?
+  patientGender    Gender?
+  doctorId         String?
+  doctor           Doctor?           @relation(fields: [doctorId], references: [id])
+  departmentId     String
+  department       Department        @relation(fields: [departmentId], references: [id])
+  appointmentDate  DateTime          @db.Date
+  preferredTime    String?
+  reason           String?
+  status           AppointmentStatus @default(PENDING)
+  adminNotes       String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  // Indexes matter a lot here — this table grows fastest.
+  @@index([appointmentDate])
+  @@index([status])
+  @@index([doctorId, appointmentDate])
+  @@index([departmentId, appointmentDate])
+  @@index([patientPhone])
+  @@map("appointments")
+}
+
+// ────────────────────────────────────
+// NEWS & EVENTS
+// ────────────────────────────────────
+enum NewsType {
+  NEWS
+  EVENT
+}
+
+model NewsEvent {
+  id            String    @id @default(uuid())
+  title         String
+  slug          String    @unique
+  type          NewsType  @default(NEWS)
+  content       String
+  excerpt       String?
+  coverImageUrl String?
+  eventDate     DateTime? @db.Date
+  isPublished   Boolean   @default(false)
+  publishedAt   DateTime?
+  authorId      String?
+  author        User?     @relation(fields: [authorId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([isPublished, publishedAt])
+  @@index([type])
+  @@map("news_events")
+}
+
+// ────────────────────────────────────
+// HOMEPAGE BANNERS (hero slider images)
+// ────────────────────────────────────
+model Banner {
+  id           String   @id @default(uuid())
+  title        String?
+  subtitle     String?
+  imageUrl     String
+  ctaText      String?
+  ctaLink      String?
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([isActive, displayOrder])
+  @@map("banners")
+}
+
+// ────────────────────────────────────
+// HEALTH PACKAGES
+// ────────────────────────────────────
+model HealthPackage {
+  id           String   @id @default(uuid())
+  name         String
+  slug         String   @unique
+  description  String?
+  priceLabel   String?  // free text e.g. "₹1,500" or "Contact for pricing"
+  includes     String[]
+  isFeatured   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@map("health_packages")
+}
+
+// ────────────────────────────────────
+// GALLERY
+// ────────────────────────────────────
+model GalleryImage {
+  id           String   @id @default(uuid())
+  title        String?
+  imageUrl     String
+  category     String?  // e.g. 'Infrastructure', 'Events', 'Team'
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@index([category, isActive])
+  @@map("gallery_images")
+}
+
+// ────────────────────────────────────
+// CAREERS
+// ────────────────────────────────────
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+}
+
+model Career {
+  id           String   @id @default(uuid())
+  title        String
+  department   String?
+  type         JobType  @default(FULL_TIME)
+  description  String?
+  requirements String?
+  lastDate     DateTime? @db.Date
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  @@index([isActive])
+  @@map("careers")
+}
+
+// ────────────────────────────────────
+// PATIENT FORMS (downloadable PDFs)
+// ────────────────────────────────────
+model PatientForm {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  fileUrl     String
+  category    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("patient_forms")
+}
+
+// ────────────────────────────────────
+// SITE SETTINGS (key-value store for contact info, social links etc.)
+// ────────────────────────────────────
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+// ────────────────────────────────────
+// AUDIT LOG (who changed what — security requirement)
+// ────────────────────────────────────
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  action     String   // e.g. "UPDATE_DOCTOR", "DELETE_NEWS"
+  entityType String   // e.g. "Doctor"
+  entityId   String?
+  details    String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("audit_logs")
+}

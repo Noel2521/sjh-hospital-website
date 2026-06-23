@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   ST. JOSEPH'S HOSPITAL — Design Tokens
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* Brand colors (from hospital brief) */
+  --mint:        #00f5d4;
+  --mint-dark:   #00bda6;
+  --mint-deep:   #007a6e;
+  --sky:         #bfd7ff;
+  --sky-dark:    #7aaaee;
+  --teal:        #64dfdf;
+  --teal-dark:   #3db8b8;
+
+  /* Backgrounds */
+  --bg-white:    #ffffff;
+  --bg-light:    #f4fefe;
+  --bg-pale:     #eafaf8;
+  --bg-sky:      #f0f6ff;
+  --bg-dark:     #0d3b36;
+  --bg-darker:   #092e2a;
+
+  /* Text */
+  --tx-dark:     #0d2b28;
+  --tx-mid:      #3a6460;
+  --tx-light:    #6a9490;
+
+  --border:      #cceee9;
+
+  --background: var(--bg-white);
+  --foreground: var(--tx-dark);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-mint: var(--mint);
+  --color-mint-dark: var(--mint-dark);
+  --color-mint-deep: var(--mint-deep);
+  --color-sky: var(--sky);
+  --color-sky-dark: var(--sky-dark);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+
+  --color-bg-white: var(--bg-white);
+  --color-bg-light: var(--bg-light);
+  --color-bg-pale: var(--bg-pale);
+  --color-bg-sky: var(--bg-sky);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-darker: var(--bg-darker);
+
+  --color-tx-dark: var(--tx-dark);
+  --color-tx-mid: var(--tx-mid);
+  --color-tx-light: var(--tx-light);
+  --color-border: var(--border);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reveal-on-scroll utility (used with IntersectionObserver hook) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero arrow buttons */
+.hero-arrow-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.hero-arrow-btn:hover {
+  background: rgba(0, 245, 212, 0.25);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.dept-card-link {
+  border-color: var(--border);
+}
+.dept-card-link:hover {
+  border-color: var(--teal);
+}
