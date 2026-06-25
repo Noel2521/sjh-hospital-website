@@ -25,9 +25,17 @@ export const departments: Department[] = [
   { id: "15", name: "ECG", slug: "ecg", iconEmoji: "💓" },
   { id: "16", name: "General Surgery", slug: "general-surgery", iconEmoji: "🔪" },
   { id: "17", name: "Dental Surgery", slug: "dental-surgery", iconEmoji: "🦷" },
+  { id: "18", name: "Resident Doctor", slug: "resident-doctors", iconEmoji: "🩻" },
+  { id: "19", name: "Intensivists", slug: "intensivists", iconEmoji: "🫧" },
+  { id: "20", name: "CMO", slug: "cmo", iconEmoji: "🏥" },
+  { id: "21", name: "Psychiatrist", slug: "psychiatry", iconEmoji: "🧩" },
+  { id: "22", name: "Surgical Oncologist", slug: "surgical-oncology", iconEmoji: "🎗️" },
+  { id: "23", name: "Cardiology", slug: "cardiology", iconEmoji: "❤️" },
+  { id: "24", name: "Ultrasound, CT Scan, X-Ray", slug: "imaging", iconEmoji: "🩻" },
 ];
 
 export const doctors: Doctor[] = [
+  // ── Urology ──────────────────────────────────────────
   {
     id: "1",
     fullName: "Dr. Xavier Assissi D'Souza",
@@ -39,6 +47,24 @@ export const doctors: Doctor[] = [
   },
   {
     id: "2",
+    fullName: "Dr. Prasad H.L.",
+    slug: "prasad-hl",
+    specialisation: "Consultant Urology",
+    departmentName: "Urology",
+    qualifications: "MBBS, MS (Gen. Surg), MCh (Urology)",
+  },
+
+  // ── General Medicine ─────────────────────────────────
+  {
+    id: "3",
+    fullName: "Dr. Ramakrishna G",
+    slug: "ramakrishna-g",
+    specialisation: "Consultant General Physician",
+    departmentName: "General Medicine",
+    qualifications: "MBBS, MD",
+  },
+  {
+    id: "4",
     fullName: "Dr. Chandrashekar P",
     slug: "chandrashekar-p",
     specialisation: "Consultant General Physician",
@@ -46,7 +72,125 @@ export const doctors: Doctor[] = [
     qualifications: "MBBS, MD, MRCP, FRCP (Glasgow)",
   },
   {
-    id: "3",
+    id: "5",
+    fullName: "Dr. Uttamanand",
+    slug: "uttamanand",
+    specialisation: "Consultant General Physician",
+    departmentName: "General Medicine",
+    qualifications: "MBBS, MD, FGID",
+  },
+
+  // ── Resident Doctors ─────────────────────────────────
+  {
+    id: "6",
+    fullName: "Dr. Helen Jayadevi",
+    slug: "helen-jayadevi",
+    specialisation: "Resident Doctor",
+    departmentName: "Resident Doctor",
+    qualifications: "MBBS",
+  },
+  {
+    id: "7",
+    fullName: "Dr. Anitha D'Coasta",
+    slug: "anitha-dcoasta",
+    specialisation: "Resident Doctor",
+    departmentName: "Resident Doctor",
+    qualifications: "MBBS",
+  },
+  {
+    id: "8",
+    fullName: "Dr. Seema Akhtar",
+    slug: "seema-akhtar",
+    specialisation: "Resident Doctor",
+    departmentName: "Resident Doctor",
+    qualifications: "MBBS",
+  },
+  {
+    id: "9",
+    fullName: "Dr. Melinda Rekha",
+    slug: "melinda-rekha",
+    specialisation: "Resident Doctor",
+    departmentName: "Resident Doctor",
+    qualifications: "MBBS",
+  },
+
+  // ── Intensivists ──────────────────────────────────────
+  {
+    id: "10",
+    fullName: "Dr. A. Manjunath",
+    slug: "a-manjunath",
+    specialisation: "Intensivist",
+    departmentName: "Intensivists",
+    qualifications: "MBBS, MD, IDCCM",
+  },
+  {
+    id: "11",
+    fullName: "Dr. A. Chennabasappa",
+    slug: "a-chennabasappa",
+    specialisation: "Intensivist",
+    departmentName: "Intensivists",
+    qualifications: "MBBS, MD, IDCCM",
+  },
+  {
+    id: "12",
+    fullName: "Dr. Jayaram",
+    slug: "jayaram",
+    specialisation: "Intensivist",
+    departmentName: "Intensivists",
+    qualifications: "MBBS, MD, DNB",
+  },
+
+  // ── CMO ───────────────────────────────────────────────
+  {
+    id: "13",
+    fullName: "Dr. Manjunath D G",
+    slug: "manjunath-d-g",
+    specialisation: "Chief Medical Officer",
+    departmentName: "CMO",
+    qualifications: "MBBS",
+  },
+
+  // ── Psychiatrist ──────────────────────────────────────
+  {
+    id: "14",
+    fullName: "Dr. Narendra Kumar",
+    slug: "narendra-kumar",
+    specialisation: "Consultant Psychiatrist",
+    departmentName: "Psychiatrist",
+    qualifications: "MBBS, DCM, DND, Psycho",
+  },
+
+  // ── Neurology & Neurosurgery ──────────────────────────
+  {
+    id: "15",
+    fullName: "Dr. Mohammed Athaulla Shariff",
+    slug: "athaulla-shariff",
+    specialisation: "Consultant Neurology & Neuro Surgery",
+    departmentName: "Neurology & Neurosurgery",
+    qualifications: "MBBS, MD, DM",
+  },
+  {
+    id: "16",
+    fullName: "Dr. Punith",
+    slug: "punith",
+    specialisation: "Consultant Neurosurgery",
+    departmentName: "Neurology & Neurosurgery",
+    qualifications: "MBBS, MS, MCh (Neuro Surgery)",
+  },
+
+  // ── Dermatology ───────────────────────────────────────
+  {
+    id: "17",
+    fullName: "Dr. Pujith",
+    slug: "pujith",
+    specialisation: "Consultant Dermatologist",
+    departmentName: "Dermatology",
+    qualifications: "MBBS, DNB",
+  },
+
+  // ── General Surgery ───────────────────────────────────
+  {
+    id: "18",
     fullName: "Dr. Ganesh P S",
     slug: "ganesh-p-s",
     specialisation: "Consultant General Surgeon",
@@ -54,44 +198,160 @@ export const doctors: Doctor[] = [
     qualifications: "MBBS, MS, FIAGES",
   },
   {
-    id: "4",
+    id: "19",
+    fullName: "Dr. Syed Mohammed Ayaz",
+    slug: "syed-mohammed-ayaz",
+    specialisation: "Consultant General Surgeon",
+    departmentName: "General Surgery",
+    qualifications: "MBBS, MSN FMS, FIAGES",
+  },
+
+  // ── Faciomaxillary Surgery & Cleft ────────────────────
+  {
+    id: "20",
+    fullName: "Dr. Manu Prasad S",
+    slug: "manu-prasad-s",
+    specialisation: "Consultant Faciomaxillary Surgery",
+    departmentName: "Faciomaxillary Surgery & Cleft",
+    qualifications: "MDS, FCCS, FHTS, MBA, PGDMLS, PGDHIM",
+  },
+  {
+    id: "21",
+    fullName: "Dr. Namitha",
+    slug: "namitha",
+    specialisation: "Consultant Faciomaxillary Surgery",
+    departmentName: "Faciomaxillary Surgery & Cleft",
+    qualifications: "BDS, MDS (OMFS), FCLCP",
+  },
+
+  // ── Plastic Surgery ───────────────────────────────────
+  {
+    id: "22",
+    fullName: "Dr. Sunil Kumar M",
+    slug: "sunil-kumar-m",
+    specialisation: "Consultant Plastic Surgery",
+    departmentName: "Plastic Surgery",
+    qualifications: "MBBS, MS, MCh",
+  },
+
+  // ── Surgical Oncologist ───────────────────────────────
+  {
+    id: "23",
+    fullName: "Dr. Kiran Shankar",
+    slug: "kiran-shankar",
+    specialisation: "Consultant Surgical Oncologist",
+    departmentName: "Surgical Oncologist",
+    qualifications: "MBBS, MS, DNB (General Surgery), MRCS Ed., UICC Fellow (Germany)",
+  },
+
+  // ── Cardiology ────────────────────────────────────────
+  {
+    id: "24",
+    fullName: "Dr. Harsha M M",
+    slug: "harsha-m-m",
+    specialisation: "Consultant Cardiologist",
+    departmentName: "Cardiology",
+    qualifications: "MD, DM (Cardiology)",
+  },
+
+  // ── Gynecology & Obstetrics ───────────────────────────
+  {
+    id: "25",
+    fullName: "Dr. Noor Farhana",
+    slug: "noor-farhana",
+    specialisation: "Consultant Obstetrics & Gynecology",
+    departmentName: "Gynecology & Obstetrics",
+    qualifications: "MBBS, DGO",
+  },
+
+  // ── Pediatrics ────────────────────────────────────────
+  {
+    id: "26",
+    fullName: "Dr. Panchaksharaia",
+    slug: "panchaksharaia",
+    specialisation: "Consultant Pediatrician",
+    departmentName: "Pediatrics",
+    qualifications: "MBBS, MD (Pediatrics)",
+  },
+  {
+    id: "27",
+    fullName: "Dr. Akbar Baig",
+    slug: "akbar-baig",
+    specialisation: "Consultant Pediatrician",
+    departmentName: "Pediatrics",
+    qualifications: "MBBS, DNB (Pediatrics)",
+  },
+  {
+    id: "28",
+    fullName: "Dr. Mohammed Musaib Taha",
+    slug: "mohammed-musaib-taha",
+    specialisation: "Consultant Pediatrician",
+    departmentName: "Pediatrics",
+    qualifications: "MBBS, MD (Pediatrics)",
+  },
+
+  // ── ENT ───────────────────────────────────────────────
+  {
+    id: "29",
+    fullName: "Dr. Praveen Kumar R",
+    slug: "praveen-kumar-r",
+    specialisation: "Consultant ENT Surgeon",
+    departmentName: "Ear, Nose & Throat",
+    qualifications: "MBBS, MS",
+  },
+
+  // ── Orthopedics ───────────────────────────────────────
+  {
+    id: "30",
     fullName: "Dr. Kumar P S",
     slug: "kumar-p-s",
     specialisation: "Consultant Orthopedics Surgeon",
-    departmentName: "Orthopedics",
+    departmentName: "Orthopedics & Sports Medicine",
     qualifications: "MBBS, MS (Orthopedics)",
   },
+
+  // ── Dental Surgery ────────────────────────────────────
   {
-    id: "5",
+    id: "31",
     fullName: "Dr. Nithin Raj",
     slug: "nithin-raj",
     specialisation: "Consultant Dental Surgery",
     departmentName: "Dental Surgery",
     qualifications: "BDS",
   },
-   {
-    id: "6",
-    fullName: "Dr. Sunil Kumar M",
-    slug: "sunil-kumar",
-    specialisation: "Consultant Plastic Surgery",
-    departmentName: "Plastic Surgery",
-    qualifications: "MBBS, MS, M.Ch.",
+  {
+    id: "32",
+    fullName: "Dr. Anchila Vincent",
+    slug: "anchila-vincent",
+    specialisation: "Consultant Dental Surgery",
+    departmentName: "Dental Surgery",
+    qualifications: "BDS",
   },
-   {
-    id: "7",
-    fullName: "Dr. Manu Prasad S",
-    slug: "manu-prasas",
-    specialisation: "Consultant Faciomaxillary Surgery",
-    departmentName: "Faciomaxillary Surgery",
-    qualifications: "MDS, FCCS, FHTS, MBA, PGDMLS, PGDHIM",
+
+  // ── Ultrasound, CT Scan, X-Ray ────────────────────────
+  {
+    id: "33",
+    fullName: "Dr. Nishanth",
+    slug: "nishanth",
+    specialisation: "Consultant Radiologist",
+    departmentName: "Ultrasound, CT Scan, X-Ray",
+    qualifications: "MBBS, MD (Radiology)",
   },
-   {
-    id: "8",
-    fullName: "Dr.Mohammed Athaulla Shariff",
-    slug: "Athaulla-shariff",
-    specialisation: "Consultant Neurology & Neuro Surgery",
-    departmentName: "Neurology & Neuro Surgery",
-    qualifications: "MBBS, MD, DM",
+  {
+    id: "34",
+    fullName: "Dr. Sanjay",
+    slug: "sanjay",
+    specialisation: "Consultant Radiologist",
+    departmentName: "Ultrasound, CT Scan, X-Ray",
+    qualifications: "MBBS, MD (Radiology)",
+  },
+  {
+    id: "35",
+    fullName: "Ms. Prateeksha",
+    slug: "prateeksha",
+    specialisation: "Audiologist",
+    departmentName: "Ultrasound, CT Scan, X-Ray",
+    qualifications: "BASLP",
   },
 ];
 

@@ -26,6 +26,9 @@ export default function DoctorsPage() {
     return matchesDept && matchesSearch;
   });
 
+  const totalDoctors = doctors.length;
+  const totalDepartments = new Set(doctors.map((d) => d.departmentName)).size;
+
   return (
     <>
       <EmergencyStrip />
@@ -63,7 +66,7 @@ export default function DoctorsPage() {
               Meet Our Specialist Doctors
             </h1>
             <p className="text-[16px] text-white/60 max-w-[520px] mx-auto leading-relaxed mb-10">
-              50+ experienced consultants across 18+ specialities, dedicated to your health
+              {totalDoctors}+ experienced consultants across {totalDepartments}+ specialities, dedicated to your health
               and recovery.
             </p>
 
@@ -86,10 +89,10 @@ export default function DoctorsPage() {
         <div className="bg-white border-b" style={{ borderColor: "var(--border)" }}>
           <div className="max-w-[1180px] mx-auto px-7 py-5 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
-              { n: "50+", l: "Specialist Doctors" },
-              { n: "18+", l: "Specialities" },
-              { n: "200+", l: "Years Combined Exp." },
+              { n: `${totalDoctors}+`, l: "Specialist Doctors" },
+              { n: `${totalDepartments}+`, l: "Specialities" },
               { n: "NABH", l: "Accredited Hospital" },
+              { n: "24/7", l: "Emergency Care" },
             ].map(({ n, l }) => (
               <div key={l}>
                 <div

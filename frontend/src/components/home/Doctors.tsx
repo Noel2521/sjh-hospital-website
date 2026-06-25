@@ -1,6 +1,22 @@
 import Link from "next/link";
 import { doctors } from "@/lib/placeholder-data";
 
+// Fixed homepage selection — does NOT change when the main doctors list is updated.
+const HOMEPAGE_DOCTOR_SLUGS = [
+  "xavier-assissi-dsouza",
+  "chandrashekar-p",
+  "ganesh-p-s",
+  "kumar-p-s",
+  "nithin-raj",
+  "sunil-kumar-m",
+  "manu-prasad-s",
+  "athaulla-shariff",
+];
+
+const homepageDoctors = HOMEPAGE_DOCTOR_SLUGS
+  .map((slug) => doctors.find((d) => d.slug === slug))
+  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
 export default function Doctors() {
   return (
     <section className="py-20" style={{ background: "var(--bg-sky)" }}>
@@ -27,7 +43,7 @@ export default function Doctors() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5.5">
-          {doctors.map((doc) => (
+          {homepageDoctors.map((doc) => (
             <Link
               href={`/doctors/${doc.slug}`}
               key={doc.id}
