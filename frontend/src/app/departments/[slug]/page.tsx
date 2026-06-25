@@ -233,16 +233,9 @@ export default async function DepartmentDetailPage({ params }: Props) {
                         </div>
                       </div>
                       <div className="px-5 py-3.5">
-                        <p className="text-[12px] font-semibold mb-1" style={{ color: "var(--teal-dark)" }}>
+                        <p className="text-[12px] font-semibold" style={{ color: "var(--teal-dark)" }}>
                           {doc.specialisation}
                         </p>
-                        <div
-                          className="text-[11.5px] text-tx-mid flex items-center gap-1.5 px-2.5 py-2 rounded-md border-l-[3px]"
-                          style={{ background: "var(--bg-pale)", borderLeftColor: "var(--mint)" }}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#1bbd7e" }} />
-                          {doc.consultationTime}
-                        </div>
                       </div>
                     </Link>
                   ))}

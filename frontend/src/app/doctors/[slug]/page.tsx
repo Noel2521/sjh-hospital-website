@@ -78,9 +78,6 @@ export default async function DoctorProfilePage({ params }: Props) {
     .map((w) => w[0])
     .join("");
 
-  const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-  const SHORT = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-
   return (
     <>
       <EmergencyStrip />
@@ -160,15 +157,6 @@ export default async function DoctorProfilePage({ params }: Props) {
                     <span style={{ color: "var(--mint)" }}>✦</span>
                     <span>NABH Accredited Hospital</span>
                   </div>
-                  {doc.consultationTime && (
-                    <div
-                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px]"
-                      style={{ background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.75)" }}
-                    >
-                      <span style={{ color: "var(--mint)" }}>🕐</span>
-                      <span>{doc.consultationTime}</span>
-                    </div>
-                  )}
                 </div>
               </div>
 
@@ -257,52 +245,6 @@ export default async function DoctorProfilePage({ params }: Props) {
               </section>
             )}
 
-            {/* Schedule */}
-            <section>
-              <SectionTitle>Consultation Schedule</SectionTitle>
-              <div
-                className="rounded-2xl border overflow-hidden"
-                style={{ borderColor: "var(--border)" }}
-              >
-                <div
-                  className="px-6 py-4 flex items-center justify-between"
-                  style={{ background: "var(--bg-pale)" }}
-                >
-                  <p className="text-[13px] font-semibold text-tx-dark">OPD Days & Timings</p>
-                  {doc.consultationTime && (
-                    <p className="text-[12.5px] font-medium" style={{ color: "var(--mint-dark)" }}>
-                      🕐 {doc.consultationTime}
-                    </p>
-                  )}
-                </div>
-                <div className="px-6 py-5 grid grid-cols-7 gap-2">
-                  {DAYS.map((day, i) => {
-                    const active = doc.availableDays.includes(day);
-                    return (
-                      <div key={day} className="flex flex-col items-center gap-1.5">
-                        <span className="text-[10.5px] font-semibold text-tx-light">{SHORT[i]}</span>
-                        <div
-                          className="w-9 h-9 rounded-lg flex items-center justify-center text-[11px] font-bold transition-all"
-                          style={{
-                            background: active ? "var(--mint-dark)" : "var(--border)",
-                            color: active ? "white" : "var(--tx-light)",
-                          }}
-                        >
-                          {active ? "✓" : "—"}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div
-                  className="px-6 py-3 border-t text-[12px] text-tx-light"
-                  style={{ borderColor: "var(--border)" }}
-                >
-                  ℹ️ Please call before visiting to confirm availability. Timings may vary on public holidays.
-                </div>
-              </div>
-            </section>
-
             {/* Patient testimonials for this department */}
             {deptTestimonials.length > 0 && (
               <section>
@@ -390,12 +332,6 @@ export default async function DoctorProfilePage({ params }: Props) {
                 {doc.experienceYears && (
                   <InfoRow icon="🏅" label="Experience" value={`${doc.experienceYears}+ years`} />
                 )}
-                <InfoRow icon="🕐" label="Timings" value={doc.consultationTime ?? "Call for details"} />
-                <InfoRow
-                  icon="📅"
-                  label="Available"
-                  value={doc.availableDays.map((d) => d.slice(0, 3)).join(", ")}
-                />
               </div>
             </div>
 

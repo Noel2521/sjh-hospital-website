@@ -9,7 +9,7 @@ export interface Doctor {
   experienceYears?: number;
   photoUrl?: string;
   bio?: string;
-  availableDays: string[];
+  availableDays?: string[];
   consultationTime?: string;
 }
 

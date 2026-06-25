@@ -55,14 +55,7 @@ export default function Doctors() {
                 <p className="text-[12.5px] font-semibold mb-0.5" style={{ color: "var(--teal-dark)" }}>
                   {doc.specialisation}
                 </p>
-                <p className="text-[11.5px] text-tx-light mb-3">{doc.qualifications}</p>
-                <div
-                  className="text-[11.5px] text-tx-mid flex items-center gap-1.5 px-2.5 py-2 rounded-md border-l-[3px]"
-                  style={{ background: "var(--bg-pale)", borderLeftColor: "var(--mint)" }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#1bbd7e" }} />
-                  {doc.consultationTime}
-                </div>
+                <p className="text-[11.5px] text-tx-light">{doc.qualifications}</p>
               </div>
             </Link>
           ))}

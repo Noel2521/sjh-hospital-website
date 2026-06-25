@@ -239,7 +239,7 @@ export default function AppointmentPage() {
                         selected={form.doctorId === doc.id}
                         onClick={() => set("doctorId", doc.id)}
                         name={doc.fullName}
-                        sub={`${doc.qualifications} · ${doc.experienceYears} yrs · ${doc.consultationTime}`}
+                        sub={doc.qualifications ?? doc.specialisation}
                         emoji="🩺"
                       />
                     )) : (

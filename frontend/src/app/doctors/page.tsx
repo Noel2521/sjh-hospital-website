@@ -202,40 +202,6 @@ export default function DoctorsPage() {
                       </p>
                       <p className="text-[11.5px] text-tx-light mb-4">{doc.qualifications}</p>
 
-                      {/* Availability */}
-                      <div
-                        className="rounded-xl p-3 mb-4"
-                        style={{ background: "var(--bg-pale)" }}
-                      >
-                        <p className="text-[10.5px] font-semibold uppercase tracking-wider text-tx-light mb-1.5">
-                          Availability
-                        </p>
-                        <div className="flex flex-wrap gap-1 mb-1.5">
-                          {["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map((day) => {
-                            const fullDay = { Mon:"Monday",Tue:"Tuesday",Wed:"Wednesday",Thu:"Thursday",Fri:"Friday",Sat:"Saturday",Sun:"Sunday" }[day]!;
-                            const active = doc.availableDays.includes(fullDay);
-                            return (
-                              <span
-                                key={day}
-                                className="text-[10px] font-semibold w-7 h-6 flex items-center justify-center rounded"
-                                style={{
-                                  background: active ? "var(--mint-dark)" : "var(--border)",
-                                  color: active ? "white" : "var(--tx-light)",
-                                }}
-                              >
-                                {day[0]}
-                              </span>
-                            );
-                          })}
-                        </div>
-                        {doc.consultationTime && (
-                          <p className="text-[11px] text-tx-mid flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#1bbd7e" }} />
-                            {doc.consultationTime}
-                          </p>
-                        )}
-                      </div>
-
                       <div
                         className="flex items-center justify-between text-[12.5px] font-semibold pt-3 border-t"
                         style={{ borderColor: "var(--border)", color: "var(--mint-dark)" }}
