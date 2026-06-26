@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/departments", label: "Departments" },
   { href: "/doctors", label: "Doctors" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/health-packages", label: "Health Packages" },
   { href: "/news", label: "News & Events" },
   { href: "/contact", label: "Contact" },

@@ -5,7 +5,7 @@
 // fetch() calls — see src/lib/api.ts for the pattern to follow.
 // ════════════════════════════════════════════
 
-import type { Doctor, Department, NewsEvent, Testimonial } from "@/types";
+import type { Doctor, Department, NewsEvent, Testimonial, GalleryEvent } from "@/types";
 
 export const departments: Department[] = [
   { id: "1", name: "Emergency, ICU & Trauma", slug: "emergency", iconEmoji: "🚑" },
@@ -436,4 +436,79 @@ export const heroSlides = [
   { id: 2, image: "/images/hero2.png", tagline: "Your Health, Our Mission. Every Day." },
   { id: 3, image: "/images/hero3.png", tagline: "Trusted Care for Every Member of Your Family." },
   { id: 4, image: "/images/hero4.png", tagline: "Advanced Medicine. A Warm, Caring Touch." },
+];
+
+export const galleryEvents: GalleryEvent[] = [
+  {
+    id: "1",
+    title: "NABH Accreditation Ceremony",
+    slug: "nabh-accreditation-ceremony",
+    date: "2026-06-01",
+    description:
+      "Celebrating St. Joseph's Hospital officially receiving NABH accreditation — a recognition of our commitment to quality and patient safety.",
+    coverImageUrl: "/images/gallery/nabh-accreditation-ceremony/cover.jpg",
+    photos: [
+      { id: "1", url: "/images/gallery/nabh-accreditation-ceremony/photo-1.jpg" },
+      { id: "2", url: "/images/gallery/nabh-accreditation-ceremony/photo-2.jpg" },
+      { id: "3", url: "/images/gallery/nabh-accreditation-ceremony/photo-3.jpg" },
+      { id: "4", url: "/images/gallery/nabh-accreditation-ceremony/photo-4.jpg" },
+    ],
+  },
+  {
+    id: "2",
+    title: "Free Cardiac Health Camp",
+    slug: "free-cardiac-health-camp",
+    date: "2026-07-15",
+    description:
+      "ECG, blood pressure, and cholesterol screening offered free to the Mysuru community at our annual cardiac health camp.",
+    coverImageUrl: "/images/gallery/free-cardiac-health-camp/cover.jpg",
+    photos: [
+      { id: "1", url: "/images/gallery/free-cardiac-health-camp/photo-1.jpg" },
+      { id: "2", url: "/images/gallery/free-cardiac-health-camp/photo-2.jpg" },
+      { id: "3", url: "/images/gallery/free-cardiac-health-camp/photo-3.jpg" },
+    ],
+  },
+  {
+    id: "3",
+    title: "New Neonatal Care Unit Inauguration",
+    slug: "neonatal-care-unit-inauguration",
+    date: "2026-05-10",
+    description:
+      "The opening of our state-of-the-art NICU, built to care for premature and critically ill newborns.",
+    coverImageUrl: "/images/gallery/neonatal-care-unit-inauguration/cover.jpg",
+    photos: [
+      { id: "1", url: "/images/gallery/neonatal-care-unit-inauguration/photo-1.jpg" },
+      { id: "2", url: "/images/gallery/neonatal-care-unit-inauguration/photo-2.jpg" },
+      { id: "3", url: "/images/gallery/neonatal-care-unit-inauguration/photo-3.jpg" },
+      { id: "4", url: "/images/gallery/neonatal-care-unit-inauguration/photo-4.jpg" },
+      { id: "5", url: "/images/gallery/neonatal-care-unit-inauguration/photo-5.jpg" },
+    ],
+  },
+  {
+    id: "4",
+    title: "Free Eye Camp with Lions Club Mysuru",
+    slug: "free-eye-camp-lions-club",
+    date: "2026-06-10",
+    description:
+      "Over 200 patients screened and 30 free cataract surgeries performed in partnership with Lions Club Mysuru.",
+    coverImageUrl: "/images/gallery/free-eye-camp-lions-club/cover.jpg",
+    photos: [
+      { id: "1", url: "/images/gallery/free-eye-camp-lions-club/photo-1.jpg" },
+      { id: "2", url: "/images/gallery/free-eye-camp-lions-club/photo-2.jpg" },
+      { id: "3", url: "/images/gallery/free-eye-camp-lions-club/photo-3.jpg" },
+    ],
+  },
+  {
+    id: "5",
+    title: "Blood Donation Drive",
+    slug: "blood-donation-drive",
+    date: "2026-07-20",
+    description:
+      "Hospital staff and the Mysuru community come together for our quarterly blood donation drive.",
+    coverImageUrl: "/images/gallery/blood-donation-drive/cover.jpg",
+    photos: [
+      { id: "1", url: "/images/gallery/blood-donation-drive/photo-1.jpg" },
+      { id: "2", url: "/images/gallery/blood-donation-drive/photo-2.jpg" },
+    ],
+  },
 ];

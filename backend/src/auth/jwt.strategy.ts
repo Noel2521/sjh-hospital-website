@@ -14,7 +14,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(config: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
+      ignoreExpiration: false,cd "C:\Users\Noel\Documents\Personal Projects\St Joseph Hospital\sjh-hospital-website\backend"
+npm install
       secretOrKey: config.get<string>('JWT_SECRET') || 'change-this-secret',
     });
   }

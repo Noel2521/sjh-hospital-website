@@ -51,6 +51,22 @@ export interface Testimonial {
   category: string;
 }
 
+export interface GalleryPhoto {
+  id: string;
+  url: string;
+  caption?: string;
+}
+
+export interface GalleryEvent {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  description?: string;
+  coverImageUrl: string;
+  photos: GalleryPhoto[];
+}
+
 export interface AppointmentFormData {
   patientName: string;
   patientPhone: string;
